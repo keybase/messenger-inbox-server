@@ -1,0 +1,27 @@
+{
+  "name": "messenger-inbox-server",
+  "version": "0.0.0",
+  "description": "Keybase.io Messenger Reference Inbox Server",
+  "main": "bin/run.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/keybase/messenger-inbox-server"
+  },
+  "keywords": [
+    "secure",
+    "messaging"
+  ],
+  "author": "Maxwell Krohn",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/keybase/messenger-inbox-server/issues"
+  },
+  "homepage": "https://github.com/keybase/messenger-inbox-server",
+  "dependencies": {
+    "kbpgp": "^0.1.14",
+    "mysql": "^2.2.0"
+  }
+}
