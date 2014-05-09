@@ -1,4 +1,8 @@
 
-exports.configs = [
-  'db', 'dbpw', 'handlers', 'host'
+exports.required = [
+  'db', 'handlers', 'host'
+]
+
+exports.optional = [
+  'dbpw'
 ]

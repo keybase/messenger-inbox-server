@@ -47,7 +47,7 @@ CREATE TABLE `in_tokens` (
 	`etime` BIGINT UNSIGNED NOT NULL,        -- when it expires if not pre-expired
 	`status` INT(11) UNSIGNED NOT NULL,      
 	`source_type` INT(11) UNSIGNED NOT NULL, -- can be { 1=PW, 2=BitCoin, 3=KeyGenerated }
-	`source_id` VARCHAR(256) NOT NULL,       -- the address to be blackholed if there's a problem
+	`source_id` VARCHAR(128) NOT NULL,       -- the address to be blackholed if there's a problem
 	`comment` TEXT,                          -- comment on why revoked?
 	PRIMARY KEY(`uid`, `token_id`),
 	KEY (`source_type`, `source_id`)         -- for revocation lookups
