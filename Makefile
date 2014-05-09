@@ -5,9 +5,9 @@ run:
 	${BHSBIN}/app.js
 
 db-init:
-	${BHSBIN}/initdb.js init
+	${BHSBIN}/dbsetup.js init
  
 db-nuke:
-	${BHSBIN}/initdb.js nuke
+	${BHSBIN}/dbsetup.js nuke
 
 .PHONY: run
