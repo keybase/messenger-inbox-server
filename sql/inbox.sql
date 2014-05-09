@@ -11,8 +11,8 @@ CREATE TABLE `notifications` (
 	`uid` CHAR(32) NOT NULL,
 	`thread_id` CHAR(64) NOT NULL,
 	`token_id` CHAR(32) NOT NULL,           -- the token associated with the notification.
-	`ctime` UNSIGNED BIGINT NOT NULL,
-	`status` UNSIGNED INT(11) NOT NULL,
+	`ctime` BIGINT UNSIGNED NOT NULL,
+	`status` INT(11) UNSIGNED NOT NULL,
 	`data`  MEDIUMTEXT NOT NULL,
 	INDEX(`uid`, `thread_id`),
 	INDEX(`uid`, `ctime`),
@@ -32,9 +32,9 @@ CREATE TABLE `token_generation_keys` (
 CREATE TABLE `passwords` (
 	`uid` CHAR(32) NOT NULL,
 	`password` VARCHAR(128) NOT NULL,
-	`ctime` UNSIGNED BIGINT NOT NULL,
-	`etime` UNSIGNED BIGINT NOT NULL, -- when it was revoked (or 0 if not)
-	`status` UNSIGNED INT(11) NOT NULL,
+	`ctime` BIGINT UNSIGNED NOT NULL,
+	`etime` BIGINT UNSIGNED NOT NULL, -- when it was revoked (or 0 if not)
+	`status` INT(11) UNSIGNED NOT NULL,
 	PRIMARY KEY(`uid`, `password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -43,10 +43,10 @@ CREATE TABLE `in_tokens` (
 	`uid` CHAR(32) NOT NULL,
 	`token_id` CHAR(32) NOT NULL,            -- the ID of the token to see which one
 	`token_value` VARCHAR(64) NOT NULL,      -- base64-encoded, use as an HMAC key
-	`ctime` UNSIGNED BIGINT NOT NULL,        -- when it was created
-	`etime` UNSIGNED BIGINT NOT NULL,        -- when it expires if not pre-expired
-	`status` UNSIGNED INT(11) NOT NULL,      
-	`source_type` UNSIGNED INT(11) NOT NULL, -- can be { 1=PW, 2=BitCoin, 3=KeyGenerated }
+	`ctime` BIGINT UNSIGNED NOT NULL,        -- when it was created
+	`etime` BIGINT UNSIGNED NOT NULL,        -- when it expires if not pre-expired
+	`status` INT(11) UNSIGNED NOT NULL,      
+	`source_type` INT(11) UNSIGNED NOT NULL, -- can be { 1=PW, 2=BitCoin, 3=KeyGenerated }
 	`source_id` VARCHAR(256) NOT NULL,       -- the address to be blackholed if there's a problem
 	`comment` TEXT,                          -- comment on why revoked?
 	PRIMARY KEY(`uid`, `token_id`),
@@ -57,8 +57,8 @@ CREATE TABLE `bitcoin_blacklist` (
 	`uid` CHAR(32) NOT NULL,
 	`address` VARCHAR(64) NOT NULL,
 	`token_id` CHAR(32) NOT NULL,            -- which token was revoked in concert
-	`ctime` UNSIGNED BIGINT NOT NULL,
-	`status` UNSIGNED INT(11) NOT NULL,
+	`ctime` BIGINT UNSIGNED NOT NULL,
+	`status` INT(11) UNSIGNED NOT NULL,
 	`comment` TEXT,
 	PRIMARY KEY(`uid`, `address`),
 	KEY(`address`)
@@ -69,10 +69,10 @@ CREATE TABLE `bitcoin_blacklist` (
 CREATE TABLE `threads` (
 	`uid` CHAR(32) NOT NULL,
 	`thread_id` CHAR(32) NOT NULL,
-	`ctime` UNSIGNED BIGINT NOT NULL,
-	`mtime` UNSIGNED BIGINT NOT NULL,
+	`ctime` BIGINT UNSIGNED NOT NULL,
+	`mtime` BIGINT UNSIGNED NOT NULL,
 	`edata` MEDIUMTEXT NOT NULL,
-	`status` UNSIGNED INT(11) NOT NULL,
+	`status` INT(11) UNSIGNED NOT NULL,
 	PRIMARY KEY (`uid`, `thread_id`),
 	INDEX (`uid`, `mtime`),
 	INDEX (`uid`, `ctime`)
@@ -83,10 +83,10 @@ CREATE TABLE `threads` (
 -- by the user into single encrypted JSON objects.
 CREATE TABLE `out_tokens` (
 	`uid` CHAR(32) NOT NULL,
-	`out_token_zid` UNSIGNED INT(11) NOT NULL,  -- sequential ID
-	`ctime` UNSIGNED BIGINT NOT NULL,
-	`mtime` UNSIGNED BIGINT NOT NULL,
+	`out_token_zid` INT(11) UNSIGNED NOT NULL,  -- sequential ID
+	`ctime` BIGINT UNSIGNED NOT NULL,
+	`mtime` BIGINT UNSIGNED NOT NULL,
 	`edata` MEDIUMTEXT NOT NULL,
-	`status` UNSIGNED INT(11) NOT NULL,
+	`status` INT(11) UNSIGNED NOT NULL,
 	PRIMARY KEY(`uid`, `out_token_zid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

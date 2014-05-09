@@ -1,4 +1,4 @@
 
 exports.configs = [
-  'db', 'handlers', 'host'
+  'db', 'dbpw', 'handlers', 'host'
 ]

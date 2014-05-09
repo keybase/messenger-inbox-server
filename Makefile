@@ -1,5 +1,13 @@
 
+BHSBIN=./node_modules/base-http-server/bin
+
 run:
-	./node_modules/base-http-server/bin/app.js
+	${BHSBIN}/app.js
+
+db-init:
+	${BHSBIN}/initdb.js init
+ 
+db-nuke:
+	${BHSBIN}/initdb.js nuke
 
 .PHONY: run
